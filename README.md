@@ -1,6 +1,6 @@
-# 🎯 AI-Powered Career Guidance Platform
+# 🎯 Career AI Platform (Flask)
 
-An intelligent career guidance application powered by Google Gemini AI, LangChain, and SerpAPI. This platform provides personalized career insights, market analysis, college recommendations, and resume coaching specifically tailored for the Indian job market.
+An intelligent career guidance application powered by Google Gemini AI, LangChain, and SerpAPI. This platform provides personalized career insights, market analysis, college recommendations, and resume coaching, now featuring a modern Flask backend and an interactive web frontend.
 
 ## ✨ Features
 
@@ -44,19 +44,23 @@ An intelligent career guidance application powered by Google Gemini AI, LangChai
 
 ## 📂 Project Structure
 
-The project follows a modular structure for better maintainability:
+The project follows a modular, client-server architecture:
 
 ```text
-ai-career-guide/
-├── app.py              # Main Streamlit application entry point
-├── requirements.txt    # Project dependencies
+flask_integration/
+├── backend/            # Flask Web Server
+│   ├── app.py          # Main Flask entry point
+│   ├── config.py       # Configuration & API management
+│   ├── routes/         # API endpoints (Career, Chat, Market, etc.)
+│   ├── services/       # Core AI logic & Agent creation
+│   ├── data/           # Career categories & static data
+│   └── utils/          # Utility functions (File & text processing)
+├── frontend/           # Web Front-end
+│   ├── templates/      # HTML templates (index.html)
+│   └── static/         # Static assets (JS, CSS, Images)
 ├── .env                # Environment variables (API keys)
-└── src/                # Source code
-    ├── components/     # UI components (Chat interface, etc.)
-    ├── services/       # Core business logic (AI services, Agent creation)
-    ├── data/           # Static data and constants (Career categories)
-    ├── utils/          # Utility functions (Text processing)
-    └── config.py       # Configuration and API key management
+├── requirements.txt    # Backend dependencies
+└── app.py              # Legacy Streamlit app (for reference)
 ```
 
 ## 🚀 Getting Started
@@ -116,21 +120,25 @@ SERPAPI_API_KEY=your_serpapi_key_here
 
 ### Running the Application
 
-Start the Streamlit application:
+1. Start the Flask backend server:
 ```bash
-streamlit run app.py
+python -m backend.app
 ```
+*Note: Make sure you are in the root directory.*
 
-The application will open in your default web browser at `http://localhost:8501`
+2. Access the application:
+- **Web Interface**: Open `http://localhost:5000` in your browser.
+- **API Documentation**: Visit `http://localhost:5000/apidocs` for interactive Swagger documentation.
 
 ## 🛠️ Technology Stack
 
-- **Frontend/UI**: [Streamlit](https://streamlit.io/) - Interactive web application framework
-- **AI Model**: [Google Gemini](https://deepmind.google/technologies/gemini/) (gemini-2.0-flash) - Advanced language model
-- **AI Framework**: [LangChain](https://www.langchain.com/) - AI application development framework (using Agents for search)
-- **Web Search**: [SerpAPI](https://serpapi.com/) - Real-time web search API
-- **Environment Management**: [python-dotenv](https://pypi.org/project/python-dotenv/) - Environment variable management
-- **Document Processing**: [PyPDF2](https://pypi.org/project/PyPDF2/) and [python-docx](https://pypi.org/project/python-docx/) - Resume file parsing
+- **Backend**: [Flask](https://flask.palletsprojects.com/) - Python web framework
+- **Frontend**: [Vanilla JS/HTML/CSS](https://developer.mozilla.org/en-US/docs/Web/JavaScript) - Modern responsive UI
+- **API Documentation**: [Flasgger](https://github.com/flasgger/flasgger) - Swagger for Flask
+- **AI Model**: [Google Gemini](https://deepmind.google/technologies/gemini/) (gemini-2.0-flash)
+- **AI Framework**: [LangChain](https://www.langchain.com/) - LLM orchestration
+- **Web Search**: [SerpAPI](https://serpapi.com/) - Real-time market data
+- **Cross-Origin**: [Flask-CORS](https://flask-cors.readthedocs.io/) - Cross-origin resource sharing
 
 ## 🇮🇳 Indian Market Focus
 
