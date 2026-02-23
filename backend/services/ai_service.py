@@ -18,7 +18,7 @@ def initialize_llm_and_tools(google_api_key: str, serpapi_key: str) -> Tuple[Opt
             raise ValueError("SerpAPI key is required.")
 
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash",
+            model="gemini-2.5-flash",
             google_api_key=google_api_key,
             temperature=0.1,
         )
